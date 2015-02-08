@@ -1,34 +1,16 @@
 package livrariaSI;
+import livrariaSI.User;
 
-public class Cliente {
+public class Cliente extends User {
+	
+	private double bonusAcumulativo;
 
-	private String nome;
-	private String cpf;
-	private String login;
-	private String senha;
-	
-	public String getNome() {
-		return nome;
+	public Cliente(String nome, String cpf, String email, String senha){
+		super(nome, cpf, email, senha);
+		
+		
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	
+
+
+
 }

@@ -1,11 +1,14 @@
 package livrariaSI;
+import livrariaSI.User;
 
-public class Funcionario extends Cliente{
-	private String sobrenome;
+public class Funcionario extends User{
+	private double salario;
 	
-	public Funcionario (){
-		super();
-		//this.sobrenome = sobrenome;
+	
+	
+	public Funcionario (String nome, String cpf, String email, String senha){
+		super(nome, cpf, email, senha);
+		this.salario = salario;
 		
 	}
 	public void adicionaLivro(){
