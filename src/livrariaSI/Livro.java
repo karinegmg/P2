@@ -7,8 +7,10 @@ public class Livro {
 	private int edicao;
 	private double preco;
 	private int codigo;
+	private boolean disponivel;
+	private int quantidade;
 	
-	public Livro(String autor, String editora, String titulo, int edicao, double preco, int codigo){
+	public Livro(String autor, String editora, String titulo, int edicao, double preco, int codigo, boolean disponivel, int quantidade){
 		
 		this.autor = autor;
 		this.editora = editora;
@@ -16,6 +18,7 @@ public class Livro {
 		this.edicao = edicao;
 		this.preco = preco;
 		this.codigo = codigo;
+		this.quantidade = quantidade;
 	}
 	
 	

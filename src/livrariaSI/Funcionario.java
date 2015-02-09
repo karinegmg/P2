@@ -6,15 +6,14 @@ public class Funcionario extends User{
 	
 	
 	
-	public Funcionario (String nome, String cpf, String email, String senha){
-		super(nome, cpf, email, senha);
+	public Funcionario (String nome, String cpf, String email, String senha, char sexo){
+		super(nome, cpf, email, senha, sexo);
 		this.salario = salario;
 		
 	}
-	public void adicionaLivro(){
-		
+	public void setSalario(double salario){
+		this.salario = salario;
 	}
-	
 
 
 
