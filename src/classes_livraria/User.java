@@ -1,13 +1,13 @@
-package livrariaSI;
+package classes_livraria;
 
 public class User {
 	private String nome;
 	private String cpf;
 	private String email;
 	private String senha;
-	private char sexo;
+	private String sexo;
 	
-	public User (String nome, String cpf, String email, String senha, char sexo){
+	public User (String nome, String cpf, String email, String senha, String sexo){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;

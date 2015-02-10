@@ -2,15 +2,29 @@ package main;
 
 import java.util.Scanner;
 
-import arquivo.Arquivo;
-import livrariaSI.Cliente;
-import livrariaSI.Funcionario;
+import classes_livraria.Cliente;
+import classes_livraria.Funcionario;
+
+import java.io.BufferedReader; 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader; 
+import java.io.FileWriter; 
+import java.io.IOException; 
+import java.util.Scanner; 
+
+import repositorios.RepositorioCliente;
+
 
 public class Livraria {
-	public static void main (String[]args){
+	public static void main (String [] args) throws FileNotFoundException{
 		
-		Arquivo arq = new Arquivo("login.in","");
+		String path = "/Arquivos/clientes.txt";
+		RepositorioCliente repcli = new RepositorioCliente();
 
+		
+		repcli.insereNoArquivo(path);
+		
 		Scanner in = new Scanner(System.in);
 
 		Cliente [] clientes = new Cliente[1000];
@@ -21,7 +35,7 @@ public class Livraria {
 		String resposta;
 		Livraria chama = new Livraria();
 		System.out.println("Welcome!");
-		System.out.println("Kari's Library! ");
+		System.out.println("This is our Library! ");
 		System.out.println("Você já é cadastrado?" +
 				"\n1 - sim." +
 		"\n2 - não.");
@@ -48,16 +62,16 @@ public class Livraria {
 
 
 	}
-	public boolean fazerLoginComSucesso(){
-		String login,senha;
-		System.out.println("Login:");
-		Scanner in = null;
-		login = in.nextLine();
-		System.out.print("Senha:");
-		senha = in.nextLine();
-		
-		return true;
-
-	}
+//	public boolean fazerLoginComSucesso(){
+//		String login,senha;
+//		System.out.println("Login:");
+//		Scanner in = null;
+//		login = in.nextLine();
+//		System.out.print("Senha:");
+//		senha = in.nextLine();
+//		
+//		return true;
+//
+//	}
 
 }
