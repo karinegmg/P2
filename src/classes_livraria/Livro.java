@@ -7,11 +7,11 @@ public class Livro {
 	private int edicao;
 	private int periodo;
 	private double preco;
-	private int codigo;
-	private boolean disponivel;
+	private String codigo;	
 	private int quantidade;
+	private boolean disponivel;
 		
-	public Livro(String autor, String editora, String titulo, int edicao, int periodo, double preco, int codigo, boolean disponivel, int quantidade){
+	public Livro(String autor, String editora, String titulo, int edicao, int periodo, double preco, String codigo, int quantidade, boolean disponivel){
 		
 		this.autor = autor;
 		this.editora = editora;
@@ -21,6 +21,78 @@ public class Livro {
 		this.preco = preco;
 		this.codigo = codigo;
 		this.quantidade = quantidade;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public String getEditora() {
+		return editora;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public int getEdicao() {
+		return edicao;
+	}
+
+	public void setEdicao(int edicao) {
+		this.edicao = edicao;
+	}
+
+	public int getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public boolean isDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
 	}
 	
 	

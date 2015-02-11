@@ -65,7 +65,7 @@ public class RepositorioCliente {
 		return cliente;
 
 	}
-	public Cliente removeCLiente(String cpf) throws ClienteNaoEncontradoException{
+	public Cliente removeCliente(String cpf) throws ClienteNaoEncontradoException{
 		Cliente cliente = null;
 		for(int i = 0; i < index; i++){
 			if(arrayCliente[i].getCpf().equals(cpf)){
@@ -80,8 +80,11 @@ public class RepositorioCliente {
 		}
 		return cliente;
 	}
-	public void insereNoArquivo(String path) throws FileNotFoundException{
+	public void insereNoArquivo(String path) throws FileNotFoundException, IOException{
 		BufferedReader bfr = new BufferedReader(new FileReader(path));
+		BufferedWriter bfw = new BufferedWriter(new FileWriter(path));
+		
+		
 
 	}
 }

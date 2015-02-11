@@ -17,13 +17,14 @@ import repositorios.RepositorioCliente;
 
 
 public class Livraria {
-	public static void main (String [] args) throws FileNotFoundException{
+	public static void main (String [] args) throws FileNotFoundException, IOException{
 		
 		String path = "/Arquivos/clientes.txt";
 		RepositorioCliente repcli = new RepositorioCliente();
 
 		
 		repcli.insereNoArquivo(path);
+		
 		
 		Scanner in = new Scanner(System.in);
 
