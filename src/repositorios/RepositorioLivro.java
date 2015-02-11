@@ -21,14 +21,14 @@ public class RepositorioLivro {
 		arrayLivro = new Livro[10000];
 	}
 
-	public Livro addLivro(String autor, String editora, String titulo, int edicao, int periodo, double preco, String codigo, int quantidade, boolean disponivel) throws AlgumCampoNaoPreenchidoException{
+	public Livro addLivro(String autor, String editora, String titulo, int edicao, int periodo, double preco, String codigo, boolean disponivel) throws AlgumCampoNaoPreenchidoException{
 		Livro novoLivro = null;
 
 		if(autor.equals("") || editora.equals("") || titulo.equals("") || codigo.equals("")){
 			throw new AlgumCampoNaoPreenchidoException();
 		}
 		else{
-			novoLivro = new Livro(autor, editora, titulo, edicao, periodo, preco, codigo, quantidade, disponivel);
+			novoLivro = new Livro(autor, editora, titulo, edicao, periodo, preco, codigo, disponivel);
 			arrayLivro [index] = novoLivro;
 			index++;
 		}
@@ -52,11 +52,11 @@ public class RepositorioLivro {
 		return livro;
 	}
 
-	public void removerLivro(String titulo) throws LivroNaoCadastradoException{
+	public void removerLivro(String codigo) throws LivroNaoCadastradoException{
 		Livro livro = null;
 
 		for(int i = 0; i < index; i++){
-			if(arrayLivro[i].getTitulo().equals(titulo)){
+			if(arrayLivro[i].getCodigo().equals(codigo)){
 				livro = arrayLivro[i];
 				i = index;
 				index = index - 1;
@@ -88,6 +88,8 @@ public class RepositorioLivro {
 		}
 
 	}
+	
+	
 
 
 

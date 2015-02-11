@@ -8,10 +8,9 @@ public class Livro {
 	private int periodo;
 	private double preco;
 	private String codigo;	
-	private int quantidade;
 	private boolean disponivel;
 		
-	public Livro(String autor, String editora, String titulo, int edicao, int periodo, double preco, String codigo, int quantidade, boolean disponivel){
+	public Livro(String autor, String editora, String titulo, int edicao, int periodo, double preco, String codigo, boolean disponivel){
 		
 		this.autor = autor;
 		this.editora = editora;
@@ -20,7 +19,7 @@ public class Livro {
 		this.periodo = periodo;
 		this.preco = preco;
 		this.codigo = codigo;
-		this.quantidade = quantidade;
+		
 	}
 
 	public String getAutor() {
@@ -79,13 +78,6 @@ public class Livro {
 		this.codigo = codigo;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
 
 	public boolean isDisponivel() {
 		return disponivel;

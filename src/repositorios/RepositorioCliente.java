@@ -6,6 +6,7 @@ package repositorios;
 import classes_livraria.Cliente;
 import excecoes.AlgumCampoNaoPreenchidoException;
 import excecoes.ClienteNaoEncontradoException;
+import excecoes.LoginInvalidoException;
 import excecoes.SexoEmFormatoIncorretoException;
 
 import java.io.BufferedReader; 
@@ -15,6 +16,8 @@ import java.io.FileReader;
 import java.io.FileWriter; 
 import java.io.IOException; 
 import java.util.Scanner; 
+
+import javax.security.auth.login.LoginException;
 
 
 public class RepositorioCliente {
@@ -80,7 +83,22 @@ public class RepositorioCliente {
 		}
 		return cliente;
 	}
-	public void insereNoArquivo(String path) throws FileNotFoundException, IOException{
+	
+	public void clienteLogando(String email, String senha) throws LoginInvalidoException{
+		boolean logado = false;
+		
+		for (int i = 0; i < index; i++){
+			if(arrayCliente[i].getEmail().equals(email) && arrayCliente[i].getSenha().equals(senha)){
+				logado = true;
+				i = index;
+			}
+			if(!logado){
+				throw new LoginInvalidoException();
+			}
+		}
+	}
+	
+	public void insereClienteNoArquivo(String path) throws FileNotFoundException, IOException{
 		BufferedReader bfr = new BufferedReader(new FileReader(path));
 		BufferedWriter bfw = new BufferedWriter(new FileWriter(path));
 		

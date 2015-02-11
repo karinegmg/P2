@@ -12,6 +12,8 @@ import classes_livraria.Cliente;
 import classes_livraria.Funcionario;
 import excecoes.AlgumCampoNaoPreenchidoException;
 import excecoes.ClienteNaoEncontradoException;
+import excecoes.FuncionarioNaoEncontradoException;
+import excecoes.LoginInvalidoException;
 import excecoes.SexoEmFormatoIncorretoException;
 
 
@@ -62,7 +64,7 @@ public class RepositorioFuncionario {
 		return funcionario;
 
 	}
-	public Funcionario removeFuncionario(String cpf) throws ClienteNaoEncontradoException{
+	public Funcionario removeFuncionario(String cpf) throws FuncionarioNaoEncontradoException{
 		Funcionario funcionario = null;
 		for(int i = 0; i < index; i++){
 			if(arrayFuncionario[i].getCpf().equals(cpf)){
@@ -72,10 +74,24 @@ public class RepositorioFuncionario {
 				arrayFuncionario[i] = arrayFuncionario[index];
 			}
 			if(funcionario == null){
-				throw new ClienteNaoEncontradoException();
+				throw new FuncionarioNaoEncontradoException();
 			}
 		}
 		return funcionario;
+	}
+	
+	public void funcioarioLogando(String email, String senha) throws LoginInvalidoException{
+		boolean logado = false;
+		
+		for (int i = 0; i < index; i++){
+			if(arrayFuncionario[i].getEmail().equals(email) && arrayFuncionario[i].getSenha().equals(senha)){
+				logado = true;
+				i = index;
+			}
+			if(!logado){
+				throw new LoginInvalidoException();
+			}
+		}
 	}
 	
 }
