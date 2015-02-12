@@ -18,7 +18,8 @@ public class RepositorioLivro {
 	private int index;
 
 	public RepositorioLivro(){
-		arrayLivro = new Livro[10000];
+		arrayLivro = new Livro[100];
+		
 	}
 
 	public Livro addLivro(String autor, String editora, String titulo, int edicao, int periodo, double preco, String codigo, boolean disponivel) throws AlgumCampoNaoPreenchidoException{
@@ -41,10 +42,12 @@ public class RepositorioLivro {
 		Livro livro = null;
 
 		for (int i = 0; i < index; i++){
-			if(arrayLivro[i].getTitulo().equals(titulo));
+			if(arrayLivro[i].getTitulo().equals(titulo)){
 
-			livro = arrayLivro[i];
-			i = index;
+				livro = arrayLivro[i];
+				i = index;
+				System.out.println(livro);
+			}
 		}
 		if(livro == null){
 			throw new LivroNaoCadastradoException();
@@ -58,16 +61,14 @@ public class RepositorioLivro {
 		for(int i = 0; i < index; i++){
 			if(arrayLivro[i].getCodigo().equals(codigo)){
 				livro = arrayLivro[i];
+
+				arrayLivro[i] = null;
 				i = index;
-				index = index - 1;
-				arrayLivro[i] = arrayLivro[index];
-
 			}
-			if(livro == null){
-				throw new LivroNaoCadastradoException();
-			}
-
-
+			
+		}
+		if(livro == null){
+			throw new LivroNaoCadastradoException();
 		}
 	}
 
@@ -75,6 +76,8 @@ public class RepositorioLivro {
 		Livro livro = this.pesquisarByTitulo(titulo);
 		if(livro.isDisponivel()){
 			livro.setDisponivel(false);
+			
+			System.out.println(livro);
 		}else{
 			throw new LivroIndisponivelException();
 		}
@@ -83,8 +86,12 @@ public class RepositorioLivro {
 	public void devolverLivro(String titulo) throws LivroNaoCadastradoException, LivroJaDisponivelException{
 		Livro livro = pesquisarByTitulo(titulo);
 
-		if(livro.isDisponivel()){
-			throw new LivroJaDisponivelException();
+		if(livro.isDisponivel()== false){
+			livro.setDisponivel(true);
+			//System.out.print("LIVRO SETADO PARA TRUE ->  ");
+			System.out.println(livro);
+
+
 		}
 
 	}
@@ -104,6 +111,17 @@ public class RepositorioLivro {
 
 
 	}
+
+	public void listarLivro(){
+
+		for (int i = 0; i < index; i++){
+			if(arrayLivro[i] != null){
+				System.out.println(arrayLivro[i]);
+				index++;
+			} 
+		}
+	}
+
 
 }
 

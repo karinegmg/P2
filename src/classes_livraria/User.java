@@ -1,17 +1,15 @@
 package classes_livraria;
 
-public class User {
+abstract class  User {
 	private String nome;
 	private String cpf;
 	private String email;
-	private String senha;
 	private String sexo;
 	
-	public User (String nome, String cpf, String email, String senha, String sexo){
+	public User (String nome, String cpf, String email, String sexo){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
-		this.senha = senha;
 		this.sexo = sexo;
 		
 	}
@@ -40,15 +38,22 @@ public class User {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
+
+	public String getSexo() {
+		return sexo;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	
+	@Override
+	public String toString() {
+		return "Nome: " + nome + ", CPF: " + cpf + ", Email: " + email
+				+  ", Sexo: " + sexo ;
 	}
 
 	
-	
+
 
 }

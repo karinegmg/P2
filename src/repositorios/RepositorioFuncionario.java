@@ -8,10 +8,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
-import classes_livraria.Cliente;
+import classes_livraria.Aluno;
 import classes_livraria.Funcionario;
 import excecoes.AlgumCampoNaoPreenchidoException;
-import excecoes.ClienteNaoEncontradoException;
+import excecoes.AlunoNaoEncontradoException;
 import excecoes.FuncionarioNaoEncontradoException;
 import excecoes.LoginInvalidoException;
 import excecoes.SexoEmFormatoIncorretoException;
@@ -26,10 +26,10 @@ public class RepositorioFuncionario {
 		index = 0;
 	}
 	
-	public Funcionario AddFuncionario(String nome, String cpf, String email, String senha, String sexo) throws SexoEmFormatoIncorretoException, AlgumCampoNaoPreenchidoException{
+	public Funcionario AddFuncionario(String nome, String cpf, String email,  String sexo, String cargo) throws SexoEmFormatoIncorretoException, AlgumCampoNaoPreenchidoException{
 		Funcionario novoFuncionario = null;
 
-		if(nome.equals("") || cpf.equals("") || email.equals("") || senha.equals("")){
+		if(nome.equals("") || cpf.equals("") || email.equals("") || cargo.equals("")){
 			throw new AlgumCampoNaoPreenchidoException();	
 		}
 		else{
@@ -42,14 +42,14 @@ public class RepositorioFuncionario {
 			}
 
 		}
-		novoFuncionario = new Funcionario(nome,cpf,email,senha, sexo);
+		novoFuncionario = new Funcionario(nome, cpf, email, sexo, cargo);
 		arrayFuncionario[index] = novoFuncionario;
 		index++;
 
 		return novoFuncionario;
 	}
 
-	public Funcionario procurarFuncionario(String cpf) throws ClienteNaoEncontradoException{
+	public Funcionario procurarFuncionario(String cpf) throws AlunoNaoEncontradoException{
 		Funcionario funcionario = null;
 
 		for(int i = 0; i < index; i++){
@@ -58,7 +58,7 @@ public class RepositorioFuncionario {
 				i = index;
 			}
 			if(funcionario == null){
-				throw new ClienteNaoEncontradoException();
+				throw new AlunoNaoEncontradoException();
 			}
 		}
 		return funcionario;
@@ -69,29 +69,41 @@ public class RepositorioFuncionario {
 		for(int i = 0; i < index; i++){
 			if(arrayFuncionario[i].getCpf().equals(cpf)){
 				funcionario = arrayFuncionario[i];
+				
+				arrayFuncionario[i] = null;
 				i = index;
-				index--;
-				arrayFuncionario[i] = arrayFuncionario[index];
 			}
-			if(funcionario == null){
-				throw new FuncionarioNaoEncontradoException();
-			}
+			
+		}
+		if(funcionario == null){
+			throw new FuncionarioNaoEncontradoException();
 		}
 		return funcionario;
 	}
 	
-	public void funcioarioLogando(String email, String senha) throws LoginInvalidoException{
-		boolean logado = false;
-		
+//	public void funcioarioLogando(String email, String senha) throws LoginInvalidoException{
+//		boolean logado = false;
+//		
+//		for (int i = 0; i < index; i++){
+//			if(arrayFuncionario[i].getEmail().equals(email) && arrayFuncionario[i].getSenha().equals(senha)){
+//				logado = true;
+//				i = index;
+//			}
+//			if(!logado){
+//				throw new LoginInvalidoException();
+//			}
+//		}
+//	}
+//	
+	public void listarFuncionario(){
+
 		for (int i = 0; i < index; i++){
-			if(arrayFuncionario[i].getEmail().equals(email) && arrayFuncionario[i].getSenha().equals(senha)){
-				logado = true;
-				i = index;
-			}
-			if(!logado){
-				throw new LoginInvalidoException();
-			}
+			if(arrayFuncionario[i] != null){
+				System.out.println(arrayFuncionario[i]);
+				index++;
+			} 
 		}
 	}
+
 	
 }

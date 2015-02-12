@@ -2,19 +2,23 @@ package classes_livraria;
 import classes_livraria.User;
 
 public class Funcionario extends User{
-	private double salario;
-	
-	public Funcionario (String nome, String cpf, String email, String senha, String sexo){
-		super(nome, cpf, email, senha, sexo);
-		this.salario = salario;
-		
-	}
-	public void setSalario(double salario){
-		this.salario = salario;
-	}
-	public double getSalario() {
-		return salario;
-	}
+	private String cargo;
 
+	public Funcionario (String nome, String cpf, String email, String sexo, String cargo){
+		super(nome, cpf, email, sexo);
+		this.cargo = cargo;
+
+	}
+	public void setCargo(String cargo){
+		this.cargo = cargo;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	@Override
+	public String toString() {
+		return "Nome: " + getNome() + ", CPF: " + getCpf() + ", Email: " + getEmail()
+				+  ", Sexo: " + getSexo() +", Cargo: "+cargo;
+	}
 
 }

@@ -19,6 +19,7 @@ public class Livro {
 		this.periodo = periodo;
 		this.preco = preco;
 		this.codigo = codigo;
+		this.disponivel = true;
 		
 	}
 
@@ -86,6 +87,16 @@ public class Livro {
 	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Autor: " + autor + ", Editora: " + editora + ", Titulo: "
+				+ titulo + ", Edicao: " + edicao + ", Periodo: " + periodo
+				+ ", Preco: " + preco + ", Codigo: " + codigo + ", Disponivel: "
+				+ disponivel;
+	}
+	
 	
 	
 
