@@ -25,9 +25,9 @@ import repositorios.RepositorioLivro;
 
 
 public class Livraria {
-	public static void main (String [] args) throws FileNotFoundException, IOException, SexoEmFormatoIncorretoException, AlgumCampoNaoPreenchidoException, TipoDeUsuarioNaoValidoException, LoginInvalidoException, LivroJaDisponivelException{
+	public static void main (String [] args) throws FileNotFoundException, IOException, SexoEmFormatoIncorretoException, AlgumCampoNaoPreenchidoException, TipoDeUsuarioNaoValidoException, LoginInvalidoException, LivroJaDisponivelException, LivroNaoCadastradoException{
 
-//		String path = "/Arquivos/clientes.txt";
+		//		String path = "/Arquivos/clientes.txt";
 		RepositorioCliente repcli = new RepositorioCliente();
 		RepositorioFuncionario repfunc = new RepositorioFuncionario();
 		RepositorioLivro repliv = new RepositorioLivro();
@@ -57,9 +57,9 @@ public class Livraria {
 						+ "\n1 - cliente"
 						+ "\n2 - funcionário");
 				tipodeusuario = in.nextInt();
-//				while((tipodeusuario != 1) || (tipodeusuario != 2)){
-//					throw new TipoDeUsuarioNaoValidoException();
-//				}
+				//				while((tipodeusuario != 1) || (tipodeusuario != 2)){
+				//					throw new TipoDeUsuarioNaoValidoException();
+				//				}
 				if(tipodeusuario == 1){
 					System.out.println("Insira seus dados:");
 					System.out.println("Nome:");
@@ -72,11 +72,11 @@ public class Livraria {
 					String senha = in.next();
 					System.out.println("Sexo(m/f):");
 					String sexo = in.next();
-					
+
 					try{
 
-					repcli.AddCliente(nome, cpf, email, senha, sexo);
-					System.out.println("Cadastro realizado com sucesso.");
+						repcli.AddCliente(nome, cpf, email, senha, sexo);
+						System.out.println("Cadastro realizado com sucesso.");
 					}catch(SexoEmFormatoIncorretoException sefie){
 						System.out.println(sefie.getMessage());
 					}catch (AlgumCampoNaoPreenchidoException acnpe){
@@ -101,14 +101,17 @@ public class Livraria {
 
 							repfunc.AddFuncionario(nome, cpf, email, senha, sexo);
 							System.out.println("Cadastro realizado com sucesso.");
-							}catch(SexoEmFormatoIncorretoException sefie){
-								System.out.println(sefie.getMessage());
-							}catch (AlgumCampoNaoPreenchidoException acnpe){
-								System.out.println(acnpe.getMessage());
-							}
+						}catch(SexoEmFormatoIncorretoException sefie){
+							System.out.println(sefie.getMessage());
+						}catch (AlgumCampoNaoPreenchidoException acnpe){
+							System.out.println(acnpe.getMessage());
+						}
 					}
 				}
 
+			}
+			if(resposta.charAt(0) == 'n'){
+				System.out.println("Ok. Volte Sempre!");
 			}
 			else{
 
@@ -185,17 +188,17 @@ public class Livraria {
 						System.out.println("Código:");
 						String codigo = in.next();
 						boolean disponivel = true;
-						
+
 						try{
 							repliv.addLivro(autor, editora, titulo, edicao, periodo, preco, codigo, disponivel);
-							
+
 							System.out.println("Livro inserido com sucesso!");
 						}catch(AlgumCampoNaoPreenchidoException acnpe){
 							System.out.println(acnpe.getMessage());
 						}
 
 						break;
-						
+
 					case 2:
 						System.out.println("Remover livro do sistema:");
 						System.out.println("Insira o código do livro a ser removido:");
@@ -206,26 +209,27 @@ public class Livraria {
 						}catch(LivroNaoCadastradoException lnce){
 							System.out.println(lnce.getMessage());
 						}
-						
+
 						break;
-						
+
 					case 3:
 						System.out.println("Pesquisar livro no sistema:");
 						System.out.println("Insira o título do livro:");
 						titulo = in.next();
-						
+
 						try{
 							repliv.pesquisarByTitulo(titulo);
-							
+
 						}catch(LivroNaoCadastradoException lnce){
 							System.out.println(lnce.getMessage());
 						}
 						break;
-						
+
 					case 4: 
 						System.out.println("Inserir novo cliente no sistema:");
+						String nome = in.nextLine();
 						System.out.println("Nome:");
-						String nome = in.next();
+
 						System.out.println("CPF:");
 						String cpf = in.next();
 						System.out.println("Email:");
@@ -234,7 +238,7 @@ public class Livraria {
 						senha = in.next();
 						System.out.println("Sexo:");
 						String sexo = in.next();
-						
+
 						try{
 							repcli.AddCliente(nome, cpf, email, senha, sexo);
 							System.out.println("Cliente inserido com sucesso");
@@ -244,7 +248,7 @@ public class Livraria {
 							System.out.println(sefi.getMessage());
 						}
 						break;
-						
+
 					case 5: 
 						System.out.println("Inserir novo funcionário no sistema:");
 						System.out.println("Nome:");
@@ -257,7 +261,7 @@ public class Livraria {
 						senha = in.next();
 						System.out.println("Sexo:");
 						sexo = in.next();
-						
+
 						try{
 							repfunc.AddFuncionario(nome, cpf, email, senha, sexo);
 							System.out.println("Funcionário inserido com sucesso");
@@ -271,7 +275,7 @@ public class Livraria {
 						System.out.println("Remover funcionário:");
 						System.out.println("Informe o cpf do funcionário:");
 						cpf = in.next();
-						
+
 						try{
 							repfunc.removeFuncionario(cpf);
 							System.out.println("Funcionário removido com sucesso!");
@@ -294,25 +298,24 @@ public class Livraria {
 
 			if (escolhaLogin == 2){
 				while(!permissao){
+
+					System.out.println("Email:");
+					email = in.next();
+					System.out.println("Senha:");
+					senha = in.next();
 					try {
-
-						System.out.println("Email:");
-						email = in.next();
-						System.out.println("Senha:");
-						senha = in.next();
 						repcli.clienteLogando(email, senha);
-
-						permissao = true;
 
 						System.out.println("Usuário logado com sucesso!");
 					}
 					catch(LoginInvalidoException lie){
 						System.out.println(lie.getMessage());
 					}
+					permissao = true;
 				}
 
 				int escolha = -1;
-				String esc;
+				int esc;
 
 				do{
 					System.out.println("\nEscolha uma das opções:" +
@@ -326,20 +329,31 @@ public class Livraria {
 
 
 					try{
-						esc = in.next();
-						escolha = Integer.parseInt(esc);
+						esc = in.nextInt();
+						escolha = esc;
 					}catch(NumberFormatException e){
 						System.out.println("ERRO: "+e.getMessage());
 					}
 
 					switch(escolha){
-					case 1: 
+					case 1:
+						System.out.println("Olá, nos informe o título do livro que deseja comprar:");
+						String titulo = in.next();
+
+						try{
+							repliv.comprarLivro(titulo);
+							System.out.println("Livro comprado com sucesso!");
+						}catch(LivroIndisponivelException lie){
+							System.out.println(lie.getMessage());
+						}catch(LivroNaoCadastradoException lnce){
+							System.out.println(lnce.getMessage());
+						}
 						break;
 					case 2:
 						System.out.println("Devolver livro.");
 						System.out.println("Insira o título do livro:");
-						String titulo = in.next();
-						
+						titulo = in.next();
+
 						try{
 							repliv.devolverLivro(titulo);
 							System.out.println("Livro devolvido. Livro Disponível.");
@@ -351,20 +365,20 @@ public class Livraria {
 						System.out.println("Pesquisar livro no sistema:");
 						System.out.println("Insira o título do livro:");
 						titulo = in.next();
-						
+
 						try{
 							repliv.pesquisarByTitulo(titulo);
-							
+
 						}catch(LivroNaoCadastradoException lnce){
 							System.out.println(lnce.getMessage());
 						}
 						break;
-						
+
 					case 4: 
 						System.out.println("Empréstimo de livro.");
 						System.out.println("Insira o título do livro a ser pego emprestado:");
 						titulo = in.next();
-						
+
 						try{
 							repliv.pegarLivroEmprestado(titulo);
 							System.out.println("Operação realizada com Sucesso!");
@@ -374,9 +388,9 @@ public class Livraria {
 							System.out.println(lie.getMessage());
 						}
 						break;
-						
+
 					case 0:
-						System.out.println("Até a próxima!");
+						System.out.println("Obrigado pela visita! Até a próxima!");
 						break;
 					default:
 						System.out.println("Digite uma opcao valida!");

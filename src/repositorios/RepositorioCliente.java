@@ -1,8 +1,5 @@
 package repositorios;
 
-
-
-
 import classes_livraria.Cliente;
 import excecoes.AlgumCampoNaoPreenchidoException;
 import excecoes.ClienteNaoEncontradoException;

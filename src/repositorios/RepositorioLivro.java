@@ -88,9 +88,27 @@ public class RepositorioLivro {
 		}
 
 	}
-	
-	
+
+	public Livro comprarLivro(String titulo) throws LivroNaoCadastradoException, LivroIndisponivelException{
+
+		Livro livro = pesquisarByTitulo(titulo);
 
 
+		if(livro == null){
+			throw new LivroNaoCadastradoException();
+		}
+		if(!(livro.isDisponivel())){
+			throw new LivroIndisponivelException();
+		}
+		return livro;
+
+
+	}
 
 }
+
+
+
+
+
+
